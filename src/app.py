@@ -1,10 +1,14 @@
-from flask import Flask
+from flask import Flask, redirect, render_template, url_for
 
 app = Flask(__name__)
 
-@app.route("/")
-def hello_world():
-    return "<p>Hello, Wo</p>"
+@app.route('/')
+def index():
+    return redirect(url_for('login'))
+
+@app.route('/login')
+def login():
+    return render_template('auth/login.html')
 
 
 if __name__ == '__main__':
